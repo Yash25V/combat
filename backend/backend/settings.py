@@ -2,11 +2,13 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-t%3&p*!q$pd!b%&1eep+v$qk41m22c((1q9%2zdf)9o_&d*(cp'
+import os
 
-DEBUG = True
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-temp-key')
 
-ALLOWED_HOSTS = []
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+
+ALLOWED_HOSTS = ['*']
 
 # ✅ UPDATED APPS
 INSTALLED_APPS = [
